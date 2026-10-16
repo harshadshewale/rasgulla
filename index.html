@@ -58,6 +58,19 @@ main{position:relative;min-height:100vh;display:flex;align-items:center;justify-
 .cd div{background:#ffe3f3;border:2px solid #f3a7de;border-radius:8px;padding:10px 4px;min-width:56px}
 .cd b{display:block;font:16px 'Press Start 2P';color:#b0289a}
 .cd small{display:block;font:6px 'Press Start 2P';color:#d2409f;margin-top:8px}
+.ticket{width:100%;max-width:290px;margin:18px auto 8px;padding:20px 14px;background:#fff0f8;border:3px dashed #e85db8;border-radius:12px;box-shadow:0 5px 0 #f5b6e0;position:relative}
+.ticket:before,.ticket:after{content:"";position:absolute;top:50%;width:18px;height:18px;background:#fff3ee;border:2px solid #e85db8;border-radius:50%;transform:translateY(-50%)}
+.ticket:before{left:-12px}.ticket:after{right:-12px}
+.ticket-label{font:7px 'Press Start 2P';color:#b0289a;letter-spacing:1px}
+.ticket-time{font:22px 'Press Start 2P';line-height:1.7;color:#d12d9d;margin:16px 0}
+.ticket-note{font:12px 'Caveat',cursive;color:#8e1769;font-size:25px}
+.rating{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0}
+.star{font-size:34px;line-height:1;background:#fff0f8;border:2px solid #f6c3e6;border-radius:9px;padding:8px;color:#ffb6d9;cursor:pointer}
+.star:active{transform:scale(.94)}
+.big-heart{font-size:clamp(130px,38vw,210px);line-height:1;color:#ff3fae;text-shadow:0 8px 0 #e72b98,0 0 35px #ff9cda;animation:heartbeat 1s ease-in-out infinite;filter:drop-shadow(0 0 18px #ff8ccc)}
+@keyframes heartbeat{0%,100%{transform:scale(1)}15%{transform:scale(1.1)}30%{transform:scale(1)}45%{transform:scale(1.06)}}
+.love-text{font:clamp(20px,6vw,31px) 'Press Start 2P';line-height:1.8;color:#d12d9d;text-shadow:3px 3px 0 #ffd0ee;margin-top:22px}
+
 .top{font:7px 'Press Start 2P';color:#d2409f;letter-spacing:2px;margin-bottom:12px}
 </style>
 </head>
@@ -85,6 +98,63 @@ main{position:relative;min-height:100vh;display:flex;align-items:center;justify-
     <div class="script q">I made something special<br>for you... wanna see it?</div>
     <div class="ch"><button class="px" id="yes">❤️ YES!</button><button class="px no" id="no">NO</button></div>
     <div class="tiny" id="esc" style="opacity:0">YOU CAN'T ESCAPE THIS ♡</div>
+  </div></div>
+</section>
+
+<section class="screen" id="s-gift">
+  <div class="win"><div class="bar"><b></b><b></b><b></b><span>GIFT.EXE</span></div>
+  <div class="body">
+    <div class="cat" data-cat></div>
+    <div class="script q">Gift mein kya chahiye,<br>Madam Ji? 🎁</div>
+    <div style="display:flex;flex-direction:column;gap:13px;width:100%;max-width:275px">
+      <button class="px gift-option" id="gift-expensive">💸 EXPENSIVE STUFF<br><small>(maar khaunga)</small></button>
+      <button class="px gift-option" id="gift-surprise">🎁 SURPRISE<br><small>(bigad diya)</small></button>
+      <button class="px gift-option" id="gift-milan">💗 APNA MILAN</button>
+    </div>
+    <div class="tiny" id="gift-response" style="margin-top:18px;min-height:32px;line-height:2"></div>
+  </div></div>
+</section>
+
+<section class="screen" id="s-ticket">
+  <div class="win"><div class="bar"><b></b><b></b><b></b><span>MEETUP.TICKET</span></div>
+  <div class="body">
+    <div class="cat" data-cat></div>
+    <div class="script q" style="margin-bottom:8px">Official Milan Ticket 💌</div>
+    <div class="ticket">
+      <div class="ticket-label">♡ SPECIAL APPOINTMENT ♡</div>
+      <div style="font-size:32px;margin:12px 0">🎟️ 💗 🎟️</div>
+      <div class="ticket-label">MILAN KA MAHURAT</div>
+      <div class="ticket-time">17 OCT<br>2:30 PM</div>
+      <div class="ticket-note">Tayar rehna ji… ❤️</div>
+      <div class="tiny" style="margin-top:16px">ONE TICKET · ONLY FOR YOU</div>
+    </div>
+    <button class="px" id="ticket-next" style="margin-top:20px">▶ NEXT</button>
+  </div></div>
+</section>
+
+<section class="screen" id="s-rating">
+  <div class="win"><div class="bar"><b></b><b></b><b></b><span>RATE.ME.EXE</span></div>
+  <div class="body">
+    <div class="cat" data-cat></div>
+    <div class="script q">Ab batao ji…<br>Gulab Jamun ko kitni rating? 🥹</div>
+    <div class="rating" aria-label="Rate from one to five stars">
+      <button class="star" data-rating="1" aria-label="1 star">★</button>
+      <button class="star" data-rating="2" aria-label="2 stars">★</button>
+      <button class="star" data-rating="3" aria-label="3 stars">★</button>
+      <button class="star" data-rating="4" aria-label="4 stars">★</button>
+      <button class="star" data-rating="5" aria-label="5 stars">★</button>
+    </div>
+    <div class="tiny" id="rating-response" style="min-height:40px;line-height:2"></div>
+  </div></div>
+</section>
+
+<section class="screen" id="s-love">
+  <div class="win"><div class="bar"><b></b><b></b><b></b><span>LOVE.EXE</span></div>
+  <div class="body">
+    <div class="big-heart">♥</div>
+    <div class="love-text">I LOVE YOU !!!!</div>
+    <div class="script" style="font-size:30px;margin-top:18px">Meri Rasgulla ❤️</div>
+    <div class="tiny" style="margin-top:22px">♡ ALWAYS YOURS, GULAB JAMUN ♡</div>
   </div></div>
 </section>
 
@@ -178,7 +248,7 @@ const ART={
   return `<div style="display:flex;align-items:flex-end"><div class="cat">${catSvg(8)}</div><div style="margin-left:-34px">${spr(G,{P:'#ffb3cf',R:'#ff7ea6'},7)}</div></div>`}
 };
 
-const screens=['s-c','s-q','s-i','s-g','s-l'];let T=[],n=0,mi=0;
+const screens=['s-c','s-q','s-gift','s-ticket','s-rating','s-love','s-i','s-g','s-l'];let T=[],n=0,mi=0;
 const later=(f,ms)=>T.push(setTimeout(f,ms));
 function go(id){T.forEach(clearTimeout);T=[];screens.forEach(s=>$(s).classList.toggle('on',s===id));window.scrollTo(0,0);
   if(id==='s-i')intro();if(id==='s-g')mem();if(id==='s-l')letter();}
@@ -187,7 +257,31 @@ const show=id=>$(id).classList.add('in');
 /* 1 — the question */
 const L=["NO?","AN OPTION","YES*","JUST SAY YES 😺","YES"];
 function resetQ(){n=0;$('no').textContent='NO';$('no').style.transform='';$('no').style.fontSize='';$('yes').style.transform='';$('esc').style.opacity=0}
-$('yes').onclick=()=>go('s-i');
+$('yes').onclick=()=>go('s-gift');
+
+function rethink(){
+  $('gift-response').textContent='Ek aur baar socho ji… 🥹💗';
+}
+$('gift-expensive').onclick=rethink;
+$('gift-surprise').onclick=rethink;
+$('gift-milan').onclick=()=>go('s-ticket');
+$('ticket-next').onclick=()=>go('s-rating');
+
+document.querySelectorAll('[data-rating]').forEach(btn=>{
+  btn.onclick=()=>{
+    const rating=Number(btn.dataset.rating);
+    document.querySelectorAll('[data-rating]').forEach(star=>{
+      star.style.color=Number(star.dataset.rating)<=rating?'#ff4fb8':'#ffb6d9';
+      star.style.background=Number(star.dataset.rating)<=rating?'#ffe0f2':'#fff0f8';
+    });
+    if(rating<5){
+      $('rating-response').textContent='Gulab Jamun ko bura lagega 🥺💔 Ek baar aur socho ji!';
+    } else {
+      $('rating-response').textContent='Awww! ❤️';
+      later(()=>go('s-love'),700);
+    }
+  };
+});
 $('no').onclick=()=>{if(n>=L.length)return go('s-i');n++;
   $('no').textContent=L[n-1];$('esc').style.opacity=1;
   $('yes').style.transform=`scale(${1+n*.28})`;
