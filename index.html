@@ -248,7 +248,7 @@ const ART={
   return `<div style="display:flex;align-items:flex-end"><div class="cat">${catSvg(8)}</div><div style="margin-left:-34px">${spr(G,{P:'#ffb3cf',R:'#ff7ea6'},7)}</div></div>`}
 };
 
-const screens=['s-c','s-q','s-gift','s-ticket','s-rating','s-love','s-i','s-g','s-l'];let T=[],n=0,mi=0;
+const screens=['s-c','s-q','s-i','s-g','s-l','s-gift','s-ticket','s-rating','s-love'];let T=[],n=0,mi=0;
 const later=(f,ms)=>T.push(setTimeout(f,ms));
 function go(id){T.forEach(clearTimeout);T=[];screens.forEach(s=>$(s).classList.toggle('on',s===id));window.scrollTo(0,0);
   if(id==='s-i')intro();if(id==='s-g')mem();if(id==='s-l')letter();}
@@ -257,7 +257,7 @@ const show=id=>$(id).classList.add('in');
 /* 1 — the question */
 const L=["NO?","AN OPTION","YES*","JUST SAY YES 😺","YES"];
 function resetQ(){n=0;$('no').textContent='NO';$('no').style.transform='';$('no').style.fontSize='';$('yes').style.transform='';$('esc').style.opacity=0}
-$('yes').onclick=()=>go('s-gift');
+$('yes').onclick=()=>go('s-i');
 
 function rethink(){
   $('gift-response').textContent='Ek aur baar socho ji… 🥹💗';
@@ -313,7 +313,7 @@ function letter(){
   $('sg').querySelector('.script').textContent=CFG.sign;$('sg').querySelector('.nm').textContent=CFG.from;
   [...$('lb').children].forEach((p,i)=>later(()=>p.classList.add('in'),600+i*1600));
   later(()=>show('sg'),600+CFG.letter.length*1600);later(()=>show('rp'),600+CFG.letter.length*1600+1200);}
-$('rp').onclick=()=>{resetQ();go('s-q')};
+$('rp').onclick=()=>go('s-gift');
 
 /* background music: browsers only allow it after a tap, so it starts on the first tap */
 const bgm=$('bgm');bgm.src=CFG.song;bgm.volume=.6;
